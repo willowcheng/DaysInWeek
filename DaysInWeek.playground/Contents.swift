@@ -4,8 +4,8 @@ import UIKit
 
 
 
-enum Day {
-    case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+enum Day: Int {
+    case Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6, Sunday = 7
 }
 
 func weekdayOrWeekend(dayOfWeek: Day) -> String {
@@ -20,5 +20,17 @@ func weekdayOrWeekend(dayOfWeek: Day) -> String {
 }
 
 var today = Day.Sunday
+today = .Tuesday
 
 weekdayOrWeekend(today)
+
+// Enum members and raw values
+func daysTillWeekend(day: Day) -> Int {
+    return Day.Saturday.rawValue - day.rawValue
+}
+
+daysTillWeekend(Day.Friday)
+
+if let firstDayOfWeek = Day(rawValue: 1) {
+    daysTillWeekend(firstDayOfWeek)
+}
